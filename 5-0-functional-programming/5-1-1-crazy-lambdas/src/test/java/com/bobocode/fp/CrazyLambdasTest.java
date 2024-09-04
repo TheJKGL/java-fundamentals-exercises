@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * A test class for {@link CrazyLambdas}.
+ * A test class for {@link CrazyLambdas_done}.
  *
  * @author Taras Boychuk
  */
@@ -24,7 +24,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(1)
     void helloSupplier() {
-        Supplier<String> helloSupplier = CrazyLambdas.helloSupplier();
+        Supplier<String> helloSupplier = CrazyLambdas_done.helloSupplier();
 
         assertEquals("Hello", helloSupplier.get());
     }
@@ -33,7 +33,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(2)
     void isEmptyPredicate() {
-        Predicate<String> isEmptyPredicate = CrazyLambdas.isEmptyPredicate();
+        Predicate<String> isEmptyPredicate = CrazyLambdas_done.isEmptyPredicate();
 
         boolean nonEmptyStringResult = isEmptyPredicate.test("fasdfa");
         boolean emptyStringResult = isEmptyPredicate.test("");
@@ -45,7 +45,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(3)
     void stringMultiplier() {
-        BiFunction<String, Integer, String> stringMultiplier = CrazyLambdas.stringMultiplier();
+        BiFunction<String, Integer, String> stringMultiplier = CrazyLambdas_done.stringMultiplier();
 
         String threeTimesHi = stringMultiplier.apply("Hi", 3);
         String twoTimesHello = stringMultiplier.apply("Hello", 2);
@@ -57,7 +57,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(4)
     void toDollarStringFunction() {
-        Function<BigDecimal, String> toDollarStringFunction = CrazyLambdas.toDollarStringFunction();
+        Function<BigDecimal, String> toDollarStringFunction = CrazyLambdas_done.toDollarStringFunction();
         String tenDollarStr = toDollarStringFunction.apply(BigDecimal.TEN.setScale(2));
 
         assertEquals("$10.00", tenDollarStr);
@@ -66,7 +66,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(5)
     void lengthInRangePredicate() {
-        Predicate<String> lengthInRangePredicate = CrazyLambdas.lengthInRangePredicate(4, 10);
+        Predicate<String> lengthInRangePredicate = CrazyLambdas_done.lengthInRangePredicate(4, 10);
 
         boolean twoLetterStringResult = lengthInRangePredicate.test("Hi");
         boolean fourLetterStringResult = lengthInRangePredicate.test("Hola");
@@ -84,7 +84,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(6)
     void randomIntSupplier() {
-        IntSupplier randomIntSupplier = CrazyLambdas.randomIntSupplier();
+        IntSupplier randomIntSupplier = CrazyLambdas_done.randomIntSupplier();
 
         int firstValue = randomIntSupplier.getAsInt();
         int secondValue = randomIntSupplier.getAsInt();
@@ -95,7 +95,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(7)
     void boundedRandomIntSupplier() {
-        IntUnaryOperator boundedRandomIntSupplier = CrazyLambdas.boundedRandomIntSupplier();
+        IntUnaryOperator boundedRandomIntSupplier = CrazyLambdas_done.boundedRandomIntSupplier();
 
         int randomIntLessThan10 = boundedRandomIntSupplier.applyAsInt(10);
         int randomIntLessThan100 = boundedRandomIntSupplier.applyAsInt(100);
@@ -111,7 +111,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(8)
     void intSquareOperation() {
-        IntUnaryOperator squareOperation = CrazyLambdas.intSquareOperation();
+        IntUnaryOperator squareOperation = CrazyLambdas_done.intSquareOperation();
 
         int squareOfFour = squareOperation.applyAsInt(4);
         int squareOfZero = squareOperation.applyAsInt(0);
@@ -123,7 +123,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(9)
     void longSumOperation() {
-        LongBinaryOperator sumOperation = CrazyLambdas.longSumOperation();
+        LongBinaryOperator sumOperation = CrazyLambdas_done.longSumOperation();
 
 
         long sumOfSevenAndEight = sumOperation.applyAsLong(7, 8);
@@ -138,7 +138,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(10)
     void stringToIntConverter() {
-        ToIntFunction<String> stringToIntConverter = CrazyLambdas.stringToIntConverter();
+        ToIntFunction<String> stringToIntConverter = CrazyLambdas_done.stringToIntConverter();
 
         int num = stringToIntConverter.applyAsInt("234");
         int negativeNum = stringToIntConverter.applyAsInt("-122");
@@ -150,7 +150,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(11)
     void nMultiplyFunctionSupplier() {
-        Supplier<IntUnaryOperator> fiveMultiplyFunctionSupplier = CrazyLambdas.nMultiplyFunctionSupplier(5);
+        Supplier<IntUnaryOperator> fiveMultiplyFunctionSupplier = CrazyLambdas_done.nMultiplyFunctionSupplier(5);
 
         IntUnaryOperator multiplyByFiveOperation = fiveMultiplyFunctionSupplier.get();
         int result = multiplyByFiveOperation.applyAsInt(11); // 11 * 5 = 55
@@ -161,7 +161,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(12)
     void composeWithTrimFunction() {
-        UnaryOperator<Function<String, String>> composeWithTrimFunction = CrazyLambdas.composeWithTrimFunction();
+        UnaryOperator<Function<String, String>> composeWithTrimFunction = CrazyLambdas_done.composeWithTrimFunction();
         Function<String, String> toLowerWithTrim = composeWithTrimFunction.apply(String::toLowerCase);
         Function<String, String> threeTimesRepeatWithTrim = composeWithTrimFunction.apply(s -> s.repeat(3));
 
@@ -176,7 +176,7 @@ public class CrazyLambdasTest {
     @Order(13)
     void runningThreadSupplier() throws InterruptedException {
         Queue<Integer> concurrentLinkedQueue = new ConcurrentLinkedQueue<>();
-        Supplier<Thread> runningThreadSupplier = CrazyLambdas.runningThreadSupplier(() -> concurrentLinkedQueue.add(25));
+        Supplier<Thread> runningThreadSupplier = CrazyLambdas_done.runningThreadSupplier(() -> concurrentLinkedQueue.add(25));
 
         // supplier does not create and start a thread before you call get()
         assertEquals(0, concurrentLinkedQueue.size());
@@ -191,7 +191,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(14)
     void newThreadRunnableConsumer() throws InterruptedException {
-        Consumer<Runnable> newThreadRunnableConsumer = CrazyLambdas.newThreadRunnableConsumer();
+        Consumer<Runnable> newThreadRunnableConsumer = CrazyLambdas_done.newThreadRunnableConsumer();
 
         Queue<Integer> concurrentLinkedQueue = new ConcurrentLinkedQueue<>();
         newThreadRunnableConsumer.accept(() -> concurrentLinkedQueue.add(50));
@@ -205,7 +205,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(15)
     void runnableToThreadSupplierFunction() throws InterruptedException {
-        Function<Runnable, Supplier<Thread>> runnableSupplierFunction = CrazyLambdas.runnableToThreadSupplierFunction();
+        Function<Runnable, Supplier<Thread>> runnableSupplierFunction = CrazyLambdas_done.runnableToThreadSupplierFunction();
         Queue<Integer> concurrentLinkedQueue = new ConcurrentLinkedQueue<>();
 
         Supplier<Thread> threadSupplier = runnableSupplierFunction.apply(() -> concurrentLinkedQueue.add(200));
@@ -223,7 +223,7 @@ public class CrazyLambdasTest {
     @Order(16)
     void functionToConditionalFunction() {
         BiFunction<IntUnaryOperator, IntPredicate, IntUnaryOperator> intFunctionToConditionalIntFunction
-                = CrazyLambdas.functionToConditionalFunction();
+                = CrazyLambdas_done.functionToConditionalFunction();
 
         IntUnaryOperator abs = intFunctionToConditionalIntFunction.apply(a -> -a, a -> a < 0);
 
@@ -235,7 +235,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(17)
     void functionLoader() {
-        BiFunction<Map<String, IntUnaryOperator>, String, IntUnaryOperator> functionLoader = CrazyLambdas.functionLoader();
+        BiFunction<Map<String, IntUnaryOperator>, String, IntUnaryOperator> functionLoader = CrazyLambdas_done.functionLoader();
         Map<String, IntUnaryOperator> functionMap = new HashMap<>();
         functionMap.put("increment", x -> x + 1);
         functionMap.put("square", x -> x * x);
@@ -252,7 +252,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(18)
     void comparing() {
-        var strLengthComparator = CrazyLambdas.comparing(String::length);
+        var strLengthComparator = CrazyLambdas_done.comparing(String::length);
         var stringList = new ArrayList<>(List.of("Me", "I", "All of us", "They", "She"));
 
         stringList.sort(strLengthComparator);
@@ -264,7 +264,7 @@ public class CrazyLambdasTest {
     @Order(19)
     void thenComparing() {
         var strLengthComparator = Comparator.comparing(String::length);
-        var lengthThenNaturalComparator = CrazyLambdas.thenComparing(strLengthComparator, s -> s);
+        var lengthThenNaturalComparator = CrazyLambdas_done.thenComparing(strLengthComparator, s -> s);
         var stringList = new ArrayList<>(List.of("Me", "I", "All of us", "They", "She", "He"));
 
         stringList.sort(lengthThenNaturalComparator);
@@ -275,7 +275,7 @@ public class CrazyLambdasTest {
     @Test
     @Order(20)
     void trickyWellDoneSupplier() {
-        Supplier<Supplier<Supplier<String>>> wellDoneSupplier = CrazyLambdas.trickyWellDoneSupplier();
+        Supplier<Supplier<Supplier<String>>> wellDoneSupplier = CrazyLambdas_done.trickyWellDoneSupplier();
 
         String wellDoneStr = wellDoneSupplier.get().get().get();
 

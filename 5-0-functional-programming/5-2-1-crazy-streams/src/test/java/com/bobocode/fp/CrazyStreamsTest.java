@@ -18,17 +18,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * A test class for {@link CrazyStreams}.
+ * A test class for {@link CrazyStreams_done}.
  * <p>
  * Please note that the helper methods of this test class do not use Stream API intentionally. You should try to find
- * a stream-based solutions for {@link CrazyStreams} by yourself.
+ * a stream-based solutions for {@link CrazyStreams_done} by yourself.
  *
  * @author Taras Boychuk
  */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CrazyStreamsTest {
 
-    private CrazyStreams streams;
+    private CrazyStreams_done streams;
     private static List<Account> accounts = Arrays.asList(
             new Account(1L, "Justin", "Butler", "justin.butler@gmail.com",
                     LocalDate.parse("2003-04-17"), Sex.MALE, LocalDate.parse("2016-06-13"), BigDecimal.valueOf(172966)),
@@ -42,7 +42,7 @@ public class CrazyStreamsTest {
 
     @BeforeEach
     void setUp() {
-        streams = new CrazyStreams(accounts);
+        streams = new CrazyStreams_done(accounts);
     }
 
     @Test

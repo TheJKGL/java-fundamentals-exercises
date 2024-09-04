@@ -17,11 +17,10 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.counting;
 import static java.util.stream.Collectors.groupingBy;
 import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.mapping;
 import static java.util.stream.Collectors.reducing;
 
 /**
- * {@link CrazyStreams} is an exercise class. Each method represent some operation with a collection of accounts that
+ * {@link CrazyStreams_done} is an exercise class. Each method represent some operation with a collection of accounts that
  * should be implemented using Stream API. Every method that is not implemented yet throws
  * {@link ExerciseNotCompletedException}.
  * <p>
@@ -33,7 +32,7 @@ import static java.util.stream.Collectors.reducing;
  * @author Taras Boychuk
  */
 @AllArgsConstructor
-public class CrazyStreams {
+public class CrazyStreams_done {
     private Collection<Account> accounts;
 
     /**
